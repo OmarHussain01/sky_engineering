@@ -7,7 +7,7 @@ cd sky_engineering
 # 2. Create & activate a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate           # macOS/Linux
-# .venv\Scripts\activate            # Windows (PowerShell)
+.venv\Scripts\activate            # Windows (PowerShell)
 
 # 3. Install dependencies
 pip install -r requirements.txt
