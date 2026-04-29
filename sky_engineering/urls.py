@@ -10,4 +10,6 @@ urlpatterns = [
     path('teams/', include('teams.urls')),
     path('organization/', include('organization.urls')),
     path('messages/', include('messages_app.urls')),
+    path('reports/', include('reports.urls')),
+
 ]

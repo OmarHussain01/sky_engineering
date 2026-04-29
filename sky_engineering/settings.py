@@ -15,10 +15,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig',
-    'organization.apps.OrganizationConfig',
-    'teams.apps.TeamsConfig',
+    'accounts',
+    'organization',
+    'teams',
     'messages_app',
+    'reports'
+
 ]
 
 MIDDLEWARE = [

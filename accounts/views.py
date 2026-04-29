@@ -13,7 +13,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, "Welcome — your account has been created.")
+            messages.success(request, "Welcome, your account has been created.")
             return redirect('home')
     else:
         form = CustomUserCreationForm()
