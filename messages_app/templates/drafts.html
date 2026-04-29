@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Drafts{% endblock %}
+
+{% block content %}
+<h1>Drafts</h1>
+
+<a href="/messages/compose/">New Message</a> |
+<a href="/messages/inbox/">Inbox</a> |
+<a href="/messages/sent/">Sent</a>
+
+<hr>
+
+{% for msg in messages %}
+    <p><b>{{ msg.subject }}</b></p>
+{% empty %}
+    <p>No drafts</p>
+{% endfor %}
+{% endblock %}

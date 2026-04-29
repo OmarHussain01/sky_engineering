@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Schedule meeting:  {{ team.name }}{% endblock %}
+{% block content %}
+<h1>Schedule meeting with {{ team.name }}</h1>
+<a href="{% url 'team_detail' team.pk %}" class="btn btn-sm btn-secondary mb-3">Back to team</a>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3"><label class="form-label">Date and time</label>{{ form.date_time }}{{ form.date_time.errors }}</div>
+  <div class="mb-3"><label class="form-label">Platform</label>{{ form.platform }}{{ form.platform.errors }}</div>
+  <div class="mb-3"><label class="form-label">Message</label>{{ form.message }}{{ form.message.errors }}</div>
+  <button type="submit" class="btn btn-primary">Send request</button>
+</form>
+{% endblock %}

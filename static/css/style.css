@@ -1,0 +1,7 @@
+body { background: #f8f9fa; }
+main { min-height: 70vh; }
+.card-title { font-weight: 600; }
+.alert-success { background: #d1e7dd; }
+.alert-info    { background: #cff4fc; }
+.alert-error,
+.alert-danger  { background: #f8d7da; }

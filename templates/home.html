@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Sky Engineering Team Registry{% endblock %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <h1 class="display-5">Sky Engineering Team Registry</h1>
+  <p class="lead">Browse engineering teams, see their skills, departments, and how they depend on each other.</p>
+  <a href="{% url 'team_list' %}" class="btn btn-primary">Browse teams</a>
+  <a href="{% url 'department_list' %}" class="btn btn-primary">Departments</a>
+</div>
+{% endblock %}

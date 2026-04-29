@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{ team.name }} — skills{% endblock %}
+{% block content %}
+<h1>{{ team.name }} — skills</h1>
+<a href="{% url 'team_detail' team.pk %}" class="btn btn-sm btn-secondary mb-3">Back to team</a>
+
+<h3>Advanced</h3>
+<ul>
+  {% for ts in grouped.advanced %}<li>{{ ts.skill.name }}</li>{% empty %}<li><em>None.</em></li>{% endfor %}
+</ul>
+
+<h3>Intermediate</h3>
+<ul>
+  {% for ts in grouped.intermediate %}<li>{{ ts.skill.name }}</li>{% empty %}<li><em>None.</em></li>{% endfor %}
+</ul>
+
+<h3>Beginner</h3>
+<ul>
+  {% for ts in grouped.beginner %}<li>{{ ts.skill.name }}</li>{% empty %}<li><em>None.</em></li>{% endfor %}
+</ul>
+{% endblock %}

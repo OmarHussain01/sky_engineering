@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{ team.name }}: dependencies{% endblock %}
+{% block content %}
+<h1>{{ team.name }} - dependencies</h1>
+<a href="{% url 'team_detail' team.pk %}" class="btn btn-sm btn-secondary mb-3">Back to team</a>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Upstream (this team depends on)</h3>
+    <ul>
+      {% for link in upstreams %}
+        <li><a href="{% url 'team_detail' link.upstream.pk %}">{{ link.upstream.name }}</a>{% if link.description %} - {{ link.description }}{% endif %}</li>
+      {% empty %}<li><em>None.</em></li>{% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h3>Downstream (depends on this team)</h3>
+    <ul>
+      {% for link in downstreams %}
+        <li><a href="{% url 'team_detail' link.downstream.pk %}">{{ link.downstream.name }}</a>{% if link.description %} - {{ link.description }}{% endif %}</li>
+      {% empty %}<li><em>None.</em></li>{% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

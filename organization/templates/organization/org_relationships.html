@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Team relationships{% endblock %}
+{% block content %}
+<h1 class="mb-4">Team relationships</h1>
+<p class="text-muted">Upstream = team being depended on. Downstream = team doing the depending.</p>
+
+{% for department in departments %}
+  <h2 class="mt-4">{{ department.name }}</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Team</th><th>Depends on (upstream)</th><th>Depended on by (downstream)</th></tr>
+    </thead>
+    <tbody>
+      {% for team in department.team_set.all %}
+        <tr>
+          <td><a href="{% url 'team_detail' team.pk %}">{{ team.name }}</a></td>
+          <td>
+            <ul class="mb-0">
+              {% for link in team.upstream_links.all %}
+                <li><a href="{% url 'team_detail' link.upstream.pk %}">{{ link.upstream.name }}</a></li>
+              {% empty %}<li><em>None</em></li>{% endfor %}
+            </ul>
+          </td>
+          <td>
+            <ul class="mb-0">
+              {% for link in team.downstream_links.all %}
+                <li><a href="{% url 'team_detail' link.downstream.pk %}">{{ link.downstream.name }}</a></li>
+              {% empty %}<li><em>None</em></li>{% endfor %}
+            </ul>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="3"><em>No teams.</em></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% empty %}
+  <p>No departments yet.</p>
+{% endfor %}
+{% endblock %}

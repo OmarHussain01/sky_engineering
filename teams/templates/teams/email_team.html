@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Email {{ team.name }}{% endblock %}
+{% block content %}
+<h1>Email {{ team.name }}</h1>
+<a href="{% url 'team_detail' team.pk %}" class="btn btn-sm btn-secondary mb-3">Back to team</a>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3"><label class="form-label">Subject</label>{{ form.subject }}{{ form.subject.errors }}</div>
+  <div class="mb-3"><label class="form-label">Body</label>{{ form.body }}{{ form.body.errors }}</div>
+  <button type="submit" class="btn btn-primary">Send email</button>
+</form>
+{% endblock %}

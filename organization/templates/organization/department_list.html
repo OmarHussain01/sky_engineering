@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Departments{% endblock %}
+{% block content %}
+<h1 class="mb-4">Departments</h1>
+<div class="row">
+  {% for department in departments %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ department.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ department.specialisation }}</h6>
+          <p class="card-text">{{ department.team_set.count }} team{{ department.team_set.count|pluralize }}</p>
+          <a href="{% url 'department_detail' department.pk %}" class="btn btn-primary btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No departments yet. Add some via the admin.</p>
+  {% endfor %}
+</div>
+{% endblock %}

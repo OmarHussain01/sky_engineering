@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+<h1>Inbox</h1>
+
+<a href="/messages/compose/">New Message</a> |
+<a href="/messages/sent/">Sent</a> |
+<a href="/messages/drafts/">Drafts</a>
+
+<hr>
+
+{% for msg in messages %}
+    <p><b>{{ msg.subject }}</b> - {{ msg.sender }}</p>
+{% empty %}
+    <p>No messages</p>
+{% endfor %}
+{% endblock %}

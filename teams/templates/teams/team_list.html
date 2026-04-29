@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Teams{% endblock %}
+{% block content %}
+<h1 class="mb-4">Teams</h1>
+
+<form method="get" class="row g-2 mb-4">
+  <div class="col-md-6">{{ form.q }}</div>
+  <div class="col-md-4">
+    <select name="department" class="form-control">
+      <option value="">All departments</option>
+      {% for d in departments %}
+        <option value="{{ d.pk }}" {% if selected_department == d.pk|stringformat:"s" %}selected{% endif %}>{{ d.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Filter</button></div>
+</form>
+
+<div class="row">
+  {% for team in teams %}
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ team.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ team.department.name }}{% if team.team_type %} · {{ team.team_type.name }}{% endif %}</h6>
+          <p class="card-text">{{ team.mission|truncatewords:20 }}</p>
+          <a href="{% url 'team_detail' team.pk %}" class="btn btn-sm btn-primary">Open</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No teams match.</p>
+  {% endfor %}
+</div>
+{% endblock %}
